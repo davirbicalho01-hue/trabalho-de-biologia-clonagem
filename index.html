@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#182d32">
+  <meta name="description" content="Explore a Estação Ipê e descubra como plantas e animais podem ser clonados.">
+  <title>Caderno de Clones · Estação Ipê</title>
+  <link rel="icon" type="image/png" href="assets/marca.png">
+  <link rel="stylesheet" href="estilo.css">
+  <script defer src="js/missoes.js"></script>
+  <script defer src="js/mapas.js"></script>
+  <script defer src="js/bancada.js"></script>
+  <script defer src="js/mundo.js"></script>
+  <script defer src="js/jogo.js"></script>
+</head>
+<body>
+  <header class="cabecalho">
+    <a class="marca" href="./index.html" aria-label="Caderno de Clones, tela inicial"><span class="selo" aria-hidden="true">✚</span> ESTAÇÃO IPÊ</a>
+    <span class="edicao">CADERNO DE CAMPO <span>///</span> EDIÇÃO 02</span>
+    <button id="som" class="botao discreto" type="button" aria-pressed="true">Som ligado</button>
+  </header>
+  <main class="pagina">
+    <section id="capa" aria-labelledby="titulo">
+      <div class="capa-miolo">
+        <div class="capa-texto">
+          <p class="sobretitulo"><span></span> AVENTURA DE BIOTECNOLOGIA</p>
+          <h1 id="titulo">Caderno<br>de <em>Clones</em></h1>
+          <p class="chamada">Uma estufa, um laboratório e dois experimentos esperando por você.</p>
+          <div class="acoes">
+            <button id="jogar" class="botao principal" type="button">Entrar na estação <span aria-hidden="true">→</span></button>
+            <button id="ajuda-capa" class="botao discreto" type="button">Como jogar</button>
+          </div>
+          <p id="aviso-save" class="save-capa" role="status"></p>
+        </div>
+        <figure class="paisagem">
+          <div class="moldura-capa">
+            <img src="assets/rooms/capa.png" width="448" height="270" alt="Estação Ipê e sua estufa iluminada, ao pé da serra">
+            <span class="pin pin-topo">● &nbsp; BASE IPÊ / SETOR 07</span>
+            <span class="pin pin-baixo">VISTA EXTERNA <b>01</b></span>
+          </div>
+          <figcaption><span>PRANCHA 01</span> Complexo de pesquisa Estação Ipê <span class="coordenadas">01—02</span></figcaption>
+        </figure>
+      </div>
+      <div class="capa-rodape">
+        <div><span class="pastilha folha">01</span><span><b>Estufa experimental</b><small>Propagação vegetativa</small></span></div>
+        <div><span class="pastilha lago">02</span><span><b>Laboratório de embriologia</b><small>Transferência nuclear</small></span></div>
+        <div class="atalhos"><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> caminhar</span><span><kbd>E</kbd> interagir</span></div>
+      </div>
+    </section>
+
+    <section id="experiencia" hidden aria-label="Jogo">
+      <header class="barra-jogo">
+        <div class="onde"><span class="led"></span><span id="setor"></span></div>
+        <div class="barra-acoes">
+          <button id="inventario" type="button" class="botao discreto">Estojo <span id="num-itens">0</span></button>
+          <button id="menu" type="button" class="botao discreto">Menu</button>
+        </div>
+      </header>
+      <div class="jogo-grid">
+        <div class="visita">
+          <div class="moldura-jogo">
+            <canvas id="mundo" width="544" height="328" aria-label="Vista do ambiente explorável da Estação Ipê"></canvas>
+            <div id="escurecer" aria-hidden="true"></div>
+            <div id="sinal" class="sinal" hidden></div>
+            <button id="interagir" class="botao principal interagir" type="button" hidden><kbd>E</kbd><span></span></button>
+          </div>
+          <div class="legenda-controles"><span><kbd>WASD</kbd> ou <kbd>↑↓←→</kbd> mover</span><span><kbd>E</kbd> interagir</span><span><kbd>ESPAÇO</kbd> esquivar</span></div>
+          <div id="toque" aria-label="Controles de movimento">
+            <div class="direcoes">
+              <button data-mover="up" aria-label="Cima">↑</button>
+              <button data-mover="left" aria-label="Esquerda">←</button>
+              <button data-mover="down" aria-label="Baixo">↓</button>
+              <button data-mover="right" aria-label="Direita">→</button>
+            </div>
+            <button id="toque-esquiva" type="button">Esquivar</button>
+          </div>
+        </div>
+        <aside class="caderno" aria-label="Diário de missão">
+          <p class="sobretitulo"><span></span> DIÁRIO DE MISSÃO</p>
+          <h2 id="objetivo"></h2>
+          <p id="orientacao"></p>
+          <div id="progresso-rotas"></div>
+          <div class="precisao">
+            <div><span>Precisão</span><output id="valor-precisao">100%</output></div>
+            <progress id="precisao" max="100" value="100" aria-label="Precisão dos procedimentos"></progress>
+          </div>
+          <p id="autosave" class="autosave" role="status"></p>
+        </aside>
+      </div>
+    </section>
+    <footer class="rodape"><span>ESTAÇÃO IPÊ &nbsp; / &nbsp; BIOLOGIA EM CAMPO</span><span>SIMULAÇÃO DIDÁTICA</span></footer>
+  </main>
+  <dialog id="janela" aria-labelledby="janela-titulo">
+    <div id="janela-corpo"></div>
+  </dialog>
+  <noscript>Ative o JavaScript para jogar Caderno de Clones.</noscript>
+</body>
+</html>
